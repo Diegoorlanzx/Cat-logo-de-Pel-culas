@@ -48,4 +48,9 @@ public class ServicioPeliculasLista implements IServicioPeliculas{
         //servicioPeliculas.buscarPeliculas(pelicula1);
 
     }
+
+    @Override
+    public void eliminarPelicula(Pelicula pelicula) {
+
+    }
 }

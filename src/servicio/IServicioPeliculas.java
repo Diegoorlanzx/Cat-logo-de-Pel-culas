@@ -9,4 +9,6 @@ public interface IServicioPeliculas {
 
     public  void  buscarPeliculas(Pelicula pelicula);
 
+    public void  eliminarPelicula(Pelicula pelicula);
+
 }

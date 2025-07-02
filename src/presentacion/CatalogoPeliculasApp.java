@@ -2,6 +2,7 @@ package presentacion;
 
 import dominio.Pelicula;
 import servicio.IServicioPeliculas;
+import servicio.ServicioPeliculasArchivo;
 import servicio.ServicioPeliculasLista;
 
 import java.util.Scanner;
@@ -11,8 +12,8 @@ public class CatalogoPeliculasApp {
     public static void main(String[] args) {
         var salir = false;
         var consola = new Scanner(System.in);
-        IServicioPeliculas servicioPeliculas = new ServicioPeliculasLista();
-
+        //IServicioPeliculas servicioPeliculas = new ServicioPeliculasLista();
+        IServicioPeliculas servicioPeliculas = new ServicioPeliculasArchivo();
         while (!salir) {
             try {
                 mostrarMenu();
@@ -30,7 +31,8 @@ public class CatalogoPeliculasApp {
                 1. Agregar Película
                 2. Listar Películas
                 3. Buscar Película
-                4. Salir
+                4. Eliminar
+                5. Salir
                 """);
     }
 
@@ -54,10 +56,16 @@ public class CatalogoPeliculasApp {
                servicioPeliculas.buscarPeliculas(new Pelicula(buscarPelicula));
            }
            case 4 -> {
+               System.out.println("Introduce el nombre de la película a eliminar:");
+               var nombreEliminar = consola.nextLine();
+               servicioPeliculas.eliminarPelicula(new Pelicula(nombreEliminar));
+           }
+
+           case 5 -> {
                System.out.println("Hasta pronto");
                salir = true;
            }
-           default -> System.out.println("Opcion no reconociddda : " + opcion);
+           default -> System.out.println("Opcion no reconocida : " + opcion);
        }
        return salir;
     }
